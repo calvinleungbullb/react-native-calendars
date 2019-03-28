@@ -46,6 +46,20 @@ export default function shouldComponentUpdate(nextProps, nextState) {
       field: 'current'
     };
   }
+
+  if (nextProps.weekDays !== this.props.weekDays) {
+    shouldUpdate = {
+      update: true,
+      field: 'weekDays'
+    };
+  }
+
+  if (nextProps.asWeek !== this.props.asWeek) {
+    shouldUpdate = {
+      update: true,
+      field: 'asWeek'
+    };
+  }
   //console.log(shouldUpdate.field, shouldUpdate.update);
   return shouldUpdate.update;
 }

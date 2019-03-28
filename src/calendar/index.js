@@ -238,7 +238,11 @@ class Calendar extends Component {
   }
 
   render() {
-    const days = dateutils.page(this.state.currentMonth, this.props.firstDay);
+    console.log('asWeek', this.props.asWeek);
+    console.log('weekDays', this.props.weekDays);
+    const days = (this.props.asWeek && this.props.weekDays && this.props.weekDays.length > 0)
+        ? this.props.weekDays.map(day => parseDate(day))
+        : dateutils.page(this.state.currentMonth, this.props.firstDay);
     const weeks = [];
     while (days.length) {
       weeks.push(this.renderWeek(days.splice(0, 7), weeks.length));
